@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s ease;
+}
+.page-enter-from,
+.page-leave-to {
+  transform: scale(0.9);
+  opacity: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-background-clip: text;
+}
+.input {
+  @apply !rounded-lg !border-gray-300 !h-12
+}
+
+.w-body {
+  width: calc(100vw - 48px) !important;
+}
+
+.button-blue {
+  @apply cursor-pointer flex justify-center items-center py-2 px-4 border border-transparent rounded !text-white bg-indigo-600 hover:bg-indigo-700
+}
+
+.button-black {
+  @apply cursor-pointer flex justify-center items-center py-2 px-4 border border-transparent rounded !text-white bg-black hover:bg-gray-700
+}
+
+.strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+/* To show the lines on right 
+and left sides of the text */
+.divider::after,
+.divider::before {
+  content: "";
+  border: 0.5px solid #d9d9d9;
+  flex: 1;
+}
+
+/* Space on left and right sides of text */
+.divider:not(:empty)::before {
+  margin-right: 1em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1em;
+}
+
+.nav-item {
+  @apply absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg
+}
+.nav-link {
+  @apply inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100
+}
+
+.button-blue-small {
+  @apply cursor-pointer items-center justify-center px-5 py-2 mr-2 text-xs font-bold leading-none hover:bg-blue-600 text-red-100 bg-blue-500 rounded 
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.max-h-header {
+  height: calc(100vh - 100px)!important;
+}
+
+.post-image {
+  max-height: 200px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.spinner {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+}
