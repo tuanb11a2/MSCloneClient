@@ -11073,6 +11073,11 @@
   "resolved" "https://registry.npmjs.org/vue-client-only/-/vue-client-only-2.1.0.tgz"
   "version" "2.1.0"
 
+"vue-country-flag@^2.3.2":
+  "integrity" "sha512-YhSS+GbLT9tp8tjMXxJKlqpBUd6dbhQJrttKj8ZbHtBocorIomFDMVMxraWVMs3hxaCW6SsAYaREkoYM00ORiA=="
+  "resolved" "https://registry.npmjs.org/vue-country-flag/-/vue-country-flag-2.3.2.tgz"
+  "version" "2.3.2"
+
 "vue-draggable@^2.0.6":
   "integrity" "sha512-/FHtAwrhy6a4duF/zr5Sf3oowf3BMHdcEfi1v8SsYYFCNqbKvBFUaiMs7Lw1ZQq2/2j6yvBoAHPKVmuLFSSiJw=="
   "resolved" "https://registry.npmjs.org/vue-draggable/-/vue-draggable-2.0.6.tgz"

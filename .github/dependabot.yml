@@ -8,9 +8,9 @@ updates:
     time: '00:00'
   open-pull-requests-limit: 10
   reviewers:
-    - nhatpham0709
+    - tuanb11a2
   assignees:
-    - nhatpham0709
+    - tuanb11a2
   commit-message:
     prefix: fix
     prefix-development: chore
@@ -23,9 +23,9 @@ updates:
     time: '00:00'
   open-pull-requests-limit: 10
   reviewers:
-    - nhatpham0709
+    - tuanb11a2
   assignees:
-    - nhatpham0709
+    - tuanb11a2
   commit-message:
     prefix: fix
     prefix-development: chore
