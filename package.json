@@ -32,7 +32,7 @@
     "nuxt": "^2.15.8",
     "portal-vue": "^2.1.7",
     "remove": "^0.1.5",
-    "sass": "^1.45.2",
+    "sass": "^1.53.0",
     "sass-loader": "^10.2.0",
     "socket.io-client": "^2.4.0",
     "twilio-video": "^2.18.1",
