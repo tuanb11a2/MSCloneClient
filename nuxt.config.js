@@ -4,6 +4,7 @@ export default {
   head() {
     return this.$nuxtI18nHead({ addSeoAttributes: true });
   },
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "LT Meet",
@@ -64,16 +65,9 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/toast",
     "@nuxtjs/i18n",
-    "@nuxtjs/recaptcha",
     "@nuxt/image",
   ],
 
-  recaptcha: {
-    hideBadge: true, // Hide badge element (v3 & v2 via size=invisible)
-    language: "vi", // Recaptcha language (v2)
-    siteKey: process.env.RECAPTCHA_SITE_KEY, // Site key for requests
-    version: 2,
-  },
   moment: {
     locales: ["vi"],
   },
@@ -106,14 +100,6 @@ export default {
   publicRuntimeConfig: {
     axios: {
       browserBaseURL: process.env.API_URL,
-    },
-    algolia: {
-      id: process.env.ALGOLIA_APP_ID,
-      secret: process.env.ALGOLIA_SECRET,
-    },
-    recaptcha: {
-      /* reCAPTCHA options */
-      siteKey: process.env.RECAPTCHA_SITE_KEY, // for example
     },
   },
 

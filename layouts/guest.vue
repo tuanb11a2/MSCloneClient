@@ -14,10 +14,7 @@
           v-for="locale in availableLocales"
           :key="locale.code"
           :to="switchLocalePath(locale.code)"
-          >
-            <country-flag v-if="locale.code == 'en'" country="us" size='big'/>
-            <country-flag v-if="locale.code == 'vn'" country="vn" size='big'/>
-          </NuxtLink
+          >{{ locale.name }}</NuxtLink
         >
         <NuxtLink :to="localePath('login')" class="ml-3">
           {{ $t("login.text") }}</NuxtLink
@@ -44,8 +41,6 @@
 </template>
 
 <script>
-import CountryFlag from 'vue-country-flag'
-
 export default {
   head() {
     return {
@@ -54,7 +49,6 @@ export default {
       },
     };
   },
-  components: { CountryFlag },
   computed: {
     isLoading() {
       return this.$store.getters.loading;

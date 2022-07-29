@@ -31,10 +31,10 @@
         <p class="w-3/4">{{ channel.name }}</p>
         <span
           v-if="
-            channel.slug !== 'general' ||
+            channel.slug !== 'general' &&
             $store.getters['auth/user'].id === group.creator_id
           "
-          title="Thêm kênh mới"
+          title="Xóa kênh"
           @click.stop.prevent="toggleDeleteModal(channel.id)"
           class="block rounded-full text-sm ml-6 text-center cursor-pointer bg-red-500 hover:bg-red-700 w-10 h-10 p-2"
         >

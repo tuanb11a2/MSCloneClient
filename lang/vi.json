@@ -83,7 +83,7 @@
         "text": "Đăng nhập",
         "welcome": "Chào mừng bạn đến với LT Meet!",
         "identity": {
-            "placeholder": "Email, tên đăng nhập hoặc mật khẩu",
+            "placeholder": "Email, tên đăng nhập hoặc số điện thoại!",
             "error": "Hãy nhập thông tin đăng nhập của bạn!!"
         },
         "password": {
