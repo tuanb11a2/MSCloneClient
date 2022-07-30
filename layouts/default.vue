@@ -102,7 +102,7 @@
           </div>
           <ul class="flex items-center flex-shrink-0 space-x-6">
             <!-- Notifications menu -->
-            
+
             <!-- Profile menu -->
             <li class="relative">
               <button
@@ -111,7 +111,7 @@
                 aria-label="Account"
                 aria-haspopup="true"
               >
-                {{ user.name }}
+                Xin chào, {{ user.name }}
               </button>
               <template v-if="isProfileMenuOpen">
                 <ul
@@ -192,14 +192,13 @@
         </div>
       </header>
       <main class="max-h-screen overflow-y-auto">
-        <Nuxt keep-alive/>
+        <Nuxt keep-alive />
       </main>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 
 export default {
   middleware: "auth",
@@ -213,16 +212,17 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+      return this.$auth.user;
+    },
     isLoading() {
       return this.$store.getters.loading;
-    }
+    },
   },
   methods: {
-    logout() {
-      this.$store.dispatch("auth/logout");
+    async logout() {
+      await this.$auth.logout();
+      await this.$router.push(this.localePath('/login'))
     },
     togglePagesMenu() {
       this.isPagesMenuOpen = !this.isPagesMenuOpen;

@@ -20,7 +20,7 @@
               :to="localePath('/')"
               class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-lg transition-all dark:text-dark-txt"
             >
-              <NuxtImg :src="user.avatar" class="w-10 mr-2 h-10 rounded-full" />
+              <NuxtImg v-if="user" :src="user.avatar" class="w-10 mr-2 h-10 rounded-full" />
               <span class="font-semibold">{{ user.name }}</span>
             </NuxtLink>
           </li>
@@ -151,7 +151,7 @@
                       <div
                         :class="{
                           '!bg-blue-500 !text-white':
-                            comment.user_id === $store.getters['auth/user'].id,
+                            comment.user_id === $auth.user.id,
                         }"
                         class="flex-1 text-black bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4"
                       >
@@ -159,9 +159,7 @@
                         <span
                           class="text-xs ml-3"
                           :class="{
-                            'text-white':
-                              comment.user_id ===
-                              $store.getters['auth/user'].id,
+                            'text-white': comment.user_id === $auth.user.id,
                           }"
                           >{{ $moment(comment.updated_at).fromNow() }}</span
                         >
@@ -294,9 +292,9 @@ export default {
   },
   components: { "virtual-list": VirtualList },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+      return this.$auth.user;
+    },
   },
   async fetch() {
     try {

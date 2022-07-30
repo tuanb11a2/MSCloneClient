@@ -40,7 +40,7 @@
     </ul>
     <div class="flex items-center">
       <button
-        v-if="$parent.group.creator_id === $store.getters['auth/user'].id"
+        v-if="$parent.group.creator_id === $auth.user.id"
         class="button-blue-small"
         @click="toggleCreateExercise"
       >

@@ -42,6 +42,7 @@
 
 <script>
 export default {
+  auth: 'guest',
   head() {
     return {
       htmlAttrs: {

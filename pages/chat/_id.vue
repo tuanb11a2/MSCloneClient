@@ -145,9 +145,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+  return this.$auth.user;
+},
   },
 
   async asyncData({ $axios, route }) {

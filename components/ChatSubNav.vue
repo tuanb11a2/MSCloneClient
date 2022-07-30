@@ -20,7 +20,7 @@
     </div>
 
     <div class="flex">
-      <NuxtLink :to="localePath(`/calls/friends?callerId=${$store.getters['auth/user'].id}&&receiverId=${receiver.id}`)" class="xl:block rounded-full w-10 h-10 p-2 ml-4">
+      <NuxtLink :to="localePath(`/calls/friends?callerId=${$auth.user.id}&&receiverId=${receiver.id}`)" class="xl:block rounded-full w-10 h-10 p-2 ml-4">
         <svg
           viewBox="0 0 20 20"
           class="w-full h-full fill-current text-blue-600"

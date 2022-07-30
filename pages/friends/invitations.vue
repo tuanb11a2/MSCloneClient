@@ -131,9 +131,9 @@ export default {
     return { friends, filteredFriends };
   },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+  return this.$auth.user;
+},
   },
   data() {
     return {

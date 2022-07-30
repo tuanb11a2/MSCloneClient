@@ -77,9 +77,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+  return this.$auth.user;
+},
     time() {
       let date = new Date();
       return this.$moment(date).format("hh:mm A");

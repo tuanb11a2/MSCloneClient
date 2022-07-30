@@ -95,7 +95,7 @@
                           :class="{
                             '!bg-blue-500 !text-white':
                               comment.user_id ===
-                              $store.getters['auth/user'].id,
+                              $auth.user.id,
                           }"
                           class="flex-1 text-black bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4"
                         >
@@ -105,7 +105,7 @@
                             :class="{
                               'text-white':
                                 comment.user_id ===
-                                $store.getters['auth/user'].id,
+                                $auth.user.id,
                             }"
                             >{{ $moment(comment.updated_at).fromNow() }}</span
                           >
@@ -187,9 +187,9 @@ export default {
     return { group, channel, friendsList };
   },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+  return this.$auth.user;
+},
   },
   data() {
     return {

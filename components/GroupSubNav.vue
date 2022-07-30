@@ -162,9 +162,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+  return this.$auth.user;
+},
   },
   data() {
     return {

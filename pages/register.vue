@@ -358,13 +358,8 @@ export default {
           formData.append("avatar", this.auth.avatar);
         }
         const res = await this.$axios.post("/auth/register", formData);
-        this.$store.dispatch("auth/saveAuthToken", {
-          authToken: res.data.access_token,
-          remember: false,
-        });
         this.$toast.success("Chào mừng bạn đến với LT Meet!");
-        await this.$store.dispatch("auth/fetchUser");
-        this.$router.push(this.localePath("/"));
+        this.$router.push(this.localePath("/login"));
       } catch (e) {
         this.error = e.response.data.meta.message;
       }

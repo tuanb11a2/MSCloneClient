@@ -179,13 +179,13 @@ export default {
     },
   },
   mounted() {
-    if (this.$route.query.token) {
-      this.$store.dispatch("auth/saveAuthToken", {
-        authToken: this.$route.query.token,
-        remember: false,
-      });
-      this.$router.push(this.localePath("/"));
-    }
+    // if (this.$route.query.token) {
+    //   this.$store.dispatch("auth/saveAuthToken", {
+    //     authToken: this.$route.query.token,
+    //     remember: false,
+    //   });
+    //   this.$router.push(this.localePath("/"));
+    // }
   },
   methods: {
     async login() {
@@ -198,12 +198,12 @@ export default {
           return;
         }
         const res = await this.$axios.post("/auth/login", this.auth);
-        this.$store.dispatch("auth/saveAuthToken", {
-          authToken: res.data.access_token,
-          remember: this.remember,
-        });
-        await this.$store.dispatch("auth/fetchUser");
-        this.$router.push(this.localePath("/"));
+        this.$auth.loginWith('laravelJWT', {
+          data: {
+            identity: this.auth.identity,
+            password: this.auth.password,
+          }
+        })
       } catch (e) {
         this.error = e.response.data.meta.message;
       } finally {

@@ -45,7 +45,6 @@ export default {
     "@/plugins/portal-vue",
     "@/plugins/click-outside",
     "@/plugins/draggable",
-    // "@/plugins/search",
     "@/plugins/vue-tailwind",
     { src: "@/plugins/calendar", mode: "client" },
   ],
@@ -62,6 +61,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     ["cookie-universal-nuxt", { alias: "cookiz" }],
+    "@nuxtjs/auth-next",
     "@nuxtjs/axios",
     "@nuxtjs/toast",
     "@nuxtjs/i18n",
@@ -71,6 +71,30 @@ export default {
   moment: {
     locales: ["vi"],
   },
+  auth: {
+    strategies: {
+      laravelJWT: {
+        provider: 'laravel/jwt',
+        url: process.env.API_URL,
+        endpoints: {
+          login: { url: '/auth/login', method: 'post' },
+          register: { url: '/auth/register', method: 'post' },
+          logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/user', method: 'get' }
+        },
+        token: {
+          property: 'access_token',
+          maxAge: 60 * 60
+        },
+        refreshToken: {
+          maxAge: 60 * 60,
+          property: 'access_token',
+          data: 'access_token',
+        },
+      },
+    }
+  },
+
   i18n: {
     detectBrowserLanguage: {
       useCookie: true,
@@ -117,6 +141,6 @@ export default {
       new webpack.ProvidePlugin({
         _: "lodash",
       }),
-    ],  
+    ],
   },
 };

@@ -32,7 +32,7 @@
         <span
           v-if="
             channel.slug !== 'general' &&
-            $store.getters['auth/user'].id === group.creator_id
+            $auth.user.id === group.creator_id
           "
           title="Xóa kênh"
           @click.stop.prevent="toggleDeleteModal(channel.id)"

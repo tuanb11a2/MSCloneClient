@@ -119,9 +119,9 @@ export default {
     return { groups, filteredGroups };
   },
   computed: {
-    ...mapGetters({
-      user: "auth/user",
-    }),
+    user() {
+  return this.$auth.user;
+},
   },
   data() {
     return {
