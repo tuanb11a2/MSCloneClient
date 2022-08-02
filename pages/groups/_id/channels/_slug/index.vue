@@ -94,8 +94,7 @@
                         <div
                           :class="{
                             '!bg-blue-500 !text-white':
-                              comment.user_id ===
-                              $auth.user.id,
+                              comment.user_id === $auth.user.id,
                           }"
                           class="flex-1 text-black bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4"
                         >
@@ -103,9 +102,7 @@
                           <span
                             class="text-xs ml-3"
                             :class="{
-                              'text-white':
-                                comment.user_id ===
-                                $auth.user.id,
+                              'text-white': comment.user_id === $auth.user.id,
                             }"
                             >{{ $moment(comment.updated_at).fromNow() }}</span
                           >
@@ -163,7 +160,7 @@ export default {
       } `,
     };
   },
-  async asyncData({ $axios, route, store, redirect, app }) {
+  async asyncData({ $axios, route, store, $auth, redirect, app }) {
     const pluck = (array, key) => {
       return array.map((o) => o[key]);
     };
@@ -172,7 +169,7 @@ export default {
     );
     const group = res.data.group;
     const channel = res.data.channel;
-    if (!pluck(group.users, "id").includes(store.getters["auth/user"].id)) {
+    if (!pluck(group.users, "id").includes($auth.user.id)) {
       app.$toast.error("Bạn không phải thành viên của nhóm này");
       redirect(`groups/${group.slug}/join`);
     }
@@ -188,8 +185,8 @@ export default {
   },
   computed: {
     user() {
-  return this.$auth.user;
-},
+      return this.$auth.user;
+    },
   },
   data() {
     return {
@@ -201,7 +198,7 @@ export default {
   mounted() {
     if (
       !this.pluck(this.group.users, "id").includes(
-        this.$store.getters["auth/user"].id
+        this.$auth.user.id
       )
     ) {
       this.$router.push("/groups");
@@ -210,9 +207,8 @@ export default {
     Echo.private(`group-${this.group.id}-channel-${this.channel.id}`).listen(
       ".post.comment",
       (e) => {
-        console.log(213);
         let post = this.channel.posts.find((post) => post.id === e.post_id);
-        if (e.comment.user_id !== this.$store.getters["auth/user"].id) {
+        if (e.comment.user_id !== this.$auth.user.id) {
           post.comments.push(e.content);
         }
       }

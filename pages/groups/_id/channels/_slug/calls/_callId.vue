@@ -94,7 +94,7 @@ export default {
       return this.$moment(date).format("hh:mm A");
     },
   },
-  async asyncData({ $axios, route, store, redirect, app }) {
+  async asyncData({ $axios, route, store, $auth, redirect, app }) {
     const pluck = (array, key) => {
       return array.map((o) => o[key]);
     };
@@ -103,7 +103,7 @@ export default {
     );
     const group = res.data.group;
     const channel = res.data.channel;
-    if (!pluck(group.users, "id").includes(store.getters["auth/user"].id)) {
+    if (!pluck(group.users, "id").includes($auth.user.id)) {
       app.$toast.error("Bạn không phải thành viên của nhóm này");
       redirect(`groups/${group.slug}/join`);
     }

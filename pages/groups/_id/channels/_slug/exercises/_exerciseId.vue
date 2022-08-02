@@ -212,7 +212,11 @@
         Nội dung là trường bắt buộc và không quá 5000 kí tự
       </div>
       <div class="flex flex-row-reverse">
-        <button class="button-blue mt-5" :disabled="$moment(exercise.deadline).isBefore()" @click="submitExercise">
+        <button
+          class="button-blue mt-5"
+          :disabled="$moment(exercise.deadline).isBefore()"
+          @click="submitExercise"
+        >
           Nộp bài
         </button>
       </div>
@@ -231,7 +235,7 @@ export default {
       }
     },
   },
-  async asyncData({ $axios, route, store }) {
+  async asyncData({ $axios, route, $auth, store }) {
     const res = await $axios.$get(`/exercises/${route.params.exerciseId}`);
     const exercise = res.data;
 
@@ -239,7 +243,7 @@ export default {
     const group = res2.data;
 
     const userSubmission = exercise.submissions.find(
-      (submission) => submission.user_id === store.getters["auth/user"].id
+      (submission) => submission.user_id === $auth.user.id
     );
 
     return { exercise, group, userSubmission };
@@ -259,8 +263,8 @@ export default {
   },
   computed: {
     user() {
-  return this.$auth.user;
-},
+      return this.$auth.user;
+    },
   },
   validations: {
     newExercise: {

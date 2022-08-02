@@ -174,7 +174,7 @@ export default {
   mounted() {
     if (
       !this.pluck(this.users, "id").includes(
-        this.$store.getters["auth/user"].id
+        this.$auth.user.id
       )
     ) {
       this.$router.push("/groups");

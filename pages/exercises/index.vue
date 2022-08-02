@@ -315,7 +315,7 @@ export default {
       if (this.exercises.length > 0) {
         return this.exercises.filter((x) =>
           this.pluck(x.submissions, "user_id").includes(
-            this.$store.getters["auth/user"].id
+            this.$auth.user.id
           )
         );
       }
