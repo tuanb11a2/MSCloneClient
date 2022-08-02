@@ -192,7 +192,7 @@
         </div>
       </header>
       <main class="max-h-screen overflow-y-auto">
-        <Nuxt keep-alive />
+        <Nuxt />
       </main>
     </div>
   </div>

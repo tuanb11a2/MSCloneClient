@@ -358,7 +358,7 @@ export default {
           formData.append("avatar", this.auth.avatar);
         }
         const res = await this.$axios.post("/auth/register", formData);
-        this.$toast.success("Chào mừng bạn đến với LT Meet!");
+        this.$toast.show("Chào mừng bạn đến với LT Meet!");
         this.$router.push(this.localePath("/login"));
       } catch (e) {
         this.error = e.response.data.meta.message;

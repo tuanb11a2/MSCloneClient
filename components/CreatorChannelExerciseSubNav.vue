@@ -1,7 +1,7 @@
 <template>
   <div
     style="top: 56px"
-    class="flex justify-between border-b px-4 md:px-20 sticky bg-white !h-14"
+    class="flex justify-between border-b px-4 md:px-20 bg-white !h-14"
   >
     <ul class="flex items-center">
       <li class="mr-2">
@@ -103,7 +103,7 @@ export default {
       }
       try {
         const res = await this.$axios.post("/exercises", formData);
-        this.$toast.success("Tạo bài tập thành công");
+        this.$toast.show("Tạo bài tập thành công");
         this.$parent.channel.exercises.unshift(res.data.data);
         this.newExercise.file = null;
         this.newExercise.title = null;

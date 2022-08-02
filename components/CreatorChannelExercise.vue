@@ -45,7 +45,11 @@
                     <p class="font-light text-sm truncate w-24 md:w-48 xl:w-96">
                       <NuxtLink
                         class="text-blue-500 hover:text-blue-600"
-                        :to="localePath(`/groups/${group.slug}`)"
+                        :to="
+                          localePath(
+                            `/groups/${group.slug}/channels/${exercise.channel_id}`
+                          )
+                        "
                         >{{ group.name }}
                       </NuxtLink>
                       - Đến hạn
@@ -59,7 +63,7 @@
                     >Đã nộp:
                     {{
                       exercise.submissions ? exercise.submissions.length : 0
-                    }}/{{ exercise.users.length }}
+                    }}/{{ exercise.users ? exercise.users.length : 0 }}
                   </span>
                 </div>
               </div>
@@ -128,7 +132,7 @@
                       >Đã nộp:
                       {{
                         exercise.submissions ? exercise.submissions.length : 0
-                      }}/{{ exercise.users.length }}
+                      }}/{{ exercise.users ? exercise.users.length : 0 }}
                     </span>
                   </div>
                 </div>
@@ -195,7 +199,7 @@
                       >Đã nộp:
                       {{
                         exercise.submissions ? exercise.submissions.length : 0
-                      }}/{{ exercise.users.length }}
+                      }}/{{ exercise.users ? exercise.users.length : 0 }}
                     </span>
                   </div>
                 </div>

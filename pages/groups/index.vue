@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="spinner" v-if="$fetchState.pending">
-      <LoadingIcon />
-    </div>
-    <div v-else class="flex items-center justify-center xl:py-10">
+    <div v-if="groups" class="flex items-center justify-center xl:py-10">
       <div
         class="bg-white flex-1 flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-10 max-w-6xl sm:p-6 sm:my-2 sm:mx-4 sm:rounded-2xl"
       >

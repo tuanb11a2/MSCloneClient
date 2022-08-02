@@ -237,7 +237,7 @@ export default {
         );
         let currentPost = this.channel.posts.find((x) => x.id === post.id);
         currentPost.comments.push(res.data);
-        this.$toast.success("Bình luận của bạn đã được gửi");
+        this.$toast.show("Bình luận của bạn đã được gửi");
         this.comment = "";
       } catch (e) {
         this.$toast.error(e.response.data.message);
@@ -263,7 +263,7 @@ export default {
           }
         );
         this.group.channels.push(res.data.data);
-        this.$toast.success("Tạo kênh mới thành công");
+        this.$toast.show("Tạo kênh mới thành công");
         this.$router.push(
           this.localePath(
             `/groups/${this.group.slug}/channels/${res.data.data.slug}`

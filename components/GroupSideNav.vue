@@ -108,7 +108,7 @@ export default {
     async deleteChannel(id) {
       try {
         await this.$axios.delete(`/groups/${this.group.id}/channels/${id}`);
-        this.$toast.success("Xóa kênh thành công");
+        this.$toast.show("Xóa kênh thành công");
         this.$router.push(
           this.localePath(`/groups/${this.group.slug}/channels/general`)
         );

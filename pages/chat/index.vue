@@ -1,8 +1,8 @@
 <template>
-  <div class="grid grid-cols-5">
-    <ChatSideNav class="col-span-5 md:col-span-1" />
+  <div class="grid xl:grid-cols-5">
+    <ChatSideNav class="col-span-5 xl:col-span-1" />
 
-    <div class="col-span-4 hidden md:block">
+    <div class="col-span-4 hidden xl:block">
       <h1 class="text-center text-2xl font-extrabold mt-20">
         Danh sách tin nhắn của bạn
       </h1>
@@ -51,9 +51,7 @@ export default {
   },
 
   async mounted() {
-    Echo.private("personal-chat").listen(".message.sent", (e) => {
-      console.log(123123231);
-
+    Echo.channel("personal-chat").listen(".message.sent", (e) => {
       if (
         e.message.sender_id !== this.user.id &&
         e.message.receiver_id === this.user.id

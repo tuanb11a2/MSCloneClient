@@ -58,27 +58,11 @@
             <th class="px-4 py-3">Điểm</th>
           </tr>
         </thead>
-        <div
-          class="px-4 md:px-20"
-          v-if="
-            !exercise.submissions ||
-            Object.keys(exercise.submissions).length === 0
-          "
-        >
-          <h1 class="text-center text-2xl font-extrabold mt-20">
-            Chưa có ai nộp bài!
-          </h1>
 
-          <NuxtImg
-            class="block mx-auto mt-10"
-            width="300"
-            height="300"
-            src="/images/empty-exercise.svg"
-            alt="student"
-          />
-        </div>
         <tbody
-          v-else
+          v-if="
+            exercise.submissions && Object.keys(exercise.submissions).length > 0
+          "
           class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
         >
           <tr
@@ -192,6 +176,25 @@
           </tr>
         </tbody>
       </table>
+      <div
+        class="px-4 md:px-20 w-full"
+        v-if="
+          !exercise.submissions ||
+          Object.keys(exercise.submissions).length === 0
+        "
+      >
+        <h1 class="text-center text-2xl font-extrabold mt-20">
+          Chưa có ai nộp bài!
+        </h1>
+
+        <NuxtImg
+          class="block mx-auto mt-10"
+          width="300"
+          height="300"
+          src="/images/empty-exercise.svg"
+          alt="student"
+        />
+      </div>
     </div>
     <div class="mt-10" v-else>
       <p class="text-sm font-semibold text-gray-500 mt-5">Công việc của tôi</p>
@@ -298,7 +301,7 @@ export default {
             grade: submission.grade,
           }
         );
-        this.$toast.success("Đã chấm điểm thành công");
+        this.$toast.show("Đã chấm điểm thành công");
         this.toggleGradeModal(submission.id);
       } catch (e) {
         this.$toast.error(e.response.data.meta.message);
@@ -328,7 +331,7 @@ export default {
           `/exercises/${this.exercise.id}/submit`,
           formData
         );
-        this.$toast.success("Đã nộp bài thành công");
+        this.$toast.show("Đã nộp bài thành công");
         this.$router.go(-1);
       } catch (e) {
         this.$toast.error(e.response.data.meta.message);

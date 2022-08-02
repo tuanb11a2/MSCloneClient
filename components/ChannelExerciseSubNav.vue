@@ -103,7 +103,7 @@ export default {
       }
       try {
         const res = await this.$axios.post("/exercises", formData);
-        this.$toast.success("Tạo bài tập thành công");
+        this.$toast.show("Tạo bài tập thành công");
         this.$parent.channel.exercises.unshift(res.data.data);
         this.newExercise.file = null;
         this.newExercise.title = null;

@@ -199,7 +199,8 @@ export default {
     },
   },
   async mounted() {
-    Echo.private("personal-chat").listen(".message.sent", (e) => {
+    Echo.channel("personal-chat").listen(".message.sent", (e) => {
+      console.log(e);
       if (
         e.message.sender_id !== this.user.id &&
         e.message.receiver_id === this.user.id
@@ -227,7 +228,7 @@ export default {
 .h-screen {
   height: 75vh;
   @media screen and (min-width: 1024px) {
-    height: 80vh;
+    height: 77vh;
   }
 }
 </style>

@@ -36,10 +36,7 @@
                   <th class="px-4 py-3 text-center">Hành động</th>
                 </tr>
               </thead>
-              <div
-                class="px-4 md:px-20"
-                v-if="Object.keys(users).length === 0"
-              >
+              <div class="px-4 md:px-20" v-if="Object.keys(users).length === 0">
                 <h1 class="text-center text-2xl font-extrabold mt-20">
                   Không có người dùng nào ở đây.
                 </h1>
@@ -136,20 +133,18 @@
 
 <script>
 export default {
-
   async asyncData({ $axios, route, store }) {
     const pluck = (array, key) => {
       return array.map((o) => o[key]);
-    };1
+    };
+    1;
     const res = await $axios.$get(`/groups/${route.params.id}`);
     const group = res.data;
     const userRes = await $axios.$get(`/groups/${route.params.id}/users`);
     const users = userRes.data;
     const pagination = userRes.meta.pagination;
 
-    const friendRes = await $axios.$get(
-      `/friends/all`
-    );
+    const friendRes = await $axios.$get(`/friends/all`);
 
     let friendsList = friendRes.data;
     if (friendsList.length > 0 && group.users) {
@@ -172,13 +167,14 @@ export default {
     };
   },
   mounted() {
-    if (
-      !this.pluck(this.users, "id").includes(
-        this.$auth.user.id
-      )
-    ) {
+    if (!this.pluck(this.users, "id").includes(this.$auth.user.id)) {
       this.$router.push("/groups");
       this.$toast.error("Bạn không có quyền truy cập vào nhóm này");
+    }
+
+    if (this.group.creator_id !== this.$auth.user.id) {
+      this.$toast.error("Chỉ nhóm chủ có quyền chỉnh sửa nhóm");
+      this.$router.go(-1);
     }
   },
   methods: {
@@ -190,7 +186,7 @@ export default {
         await this.$axios.$delete(
           `/groups/${this.group.id}/remove-member/${id}`
         );
-        this.$toast.success("Xóa thành công");
+        this.$toast.show("Xóa thành công");
         this.toggleRemoveModal(id);
 
         this.users = this.users.filter((x) => x.id !== id);
@@ -227,7 +223,7 @@ export default {
           });
         });
         this.selectedFriends = [];
-        this.$toast.success("Thêm thành viên thành công!");
+        this.$toast.show("Thêm thành viên thành công!");
       } catch (e) {
         this.$toast.error(e.response.data.meta.message);
       } finally {
@@ -244,7 +240,7 @@ export default {
           }
         );
         this.group.channels.push(res.data.data);
-        this.$toast.success("Tạo kênh mới thành công");
+        this.$toast.show("Tạo kênh mới thành công");
         this.$router.push(
           this.localePath(
             `/groups/${this.group.slug}/channels/${res.data.data.slug}`

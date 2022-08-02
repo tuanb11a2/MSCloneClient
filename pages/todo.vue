@@ -187,10 +187,10 @@ export default {
         this.newTodo.name = "";
         this.newTodo.deadline = "";
         this.$v.$reset();
-        this.$toastr.s(
-          "This Message From Toastr Plugin\n You can access this plugin : <font color='yellow'>this.$toastr</font>"
+        this.$toast.showr.s(
+          "This Message From Toastr Plugin\n You can access this plugin : <font color='yellow'>this.$toast.showr</font>"
         );
-        this.$toastr.s("Thêm công việc mới thành công!");
+        this.$toast.showr.s("Thêm công việc mới thành công!");
       } catch (e) {}
     },
   },

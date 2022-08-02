@@ -142,12 +142,12 @@ export default {
     async submit(friendId) {
       try {
         await this.$axios.$get(`/friends/${friendId}/add`);
-        this.$toast.success("Gửi lời mời kết bạn thành công!");
+        this.$toast.show("Gửi lời mời kết bạn thành công!");
         this.filteredFriends = this.filteredFriends.filter(
           (friend) => friend.id !== friendId
         );
       } catch (e) {
-        this.$toast.success("Gửi lời mời kết bạn thất bại!");
+        this.$toast.show("Gửi lời mời kết bạn thất bại!");
       }
     },
 

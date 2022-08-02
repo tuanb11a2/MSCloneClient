@@ -151,7 +151,7 @@ export default {
         this.filteredFriends = this.filteredFriends.filter(
           (friend) => friend.id !== friendId
         );
-        this.$toast.success("Xóa kết bạn thành công!");
+        this.$toast.show("Xóa kết bạn thành công!");
       } catch (e) {
         this.$toast.error(e.response.data.meta.message);
       }
@@ -161,7 +161,7 @@ export default {
       try {
         await this.$axios.$get(`/friends/${id}/accept`);
         this.filteredFriends = this.filteredFriends.filter((x) => x.id !== id);
-        this.$toast.success("Bạn đã chấp nhận lời mời kết bạn!");
+        this.$toast.show("Bạn đã chấp nhận lời mời kết bạn!");
       } catch (e) {
         this.$toast.error(e.response.data.message);
       }

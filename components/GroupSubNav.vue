@@ -1,15 +1,22 @@
 <template>
   <div class="sticky border-b px-4 md:px-20 top-0 bg-white !h-32 xl:!h-14">
-    <div
-      class="flex justify-between "
-    >
+    <div class="flex justify-between">
       <ul class="flex items-center">
         <li class="mr-10 hidden xl:block">
-          <i
-            class="fas fa-hamburger text-3xl text-cyan-700 cursor-pointer"
+          <svg
             title="Ẩn/hiện danh sách kênh"
             @click="$parent.toggleVisibleSideNav"
-          ></i>
+            class="w-6 h-6 text-cyan-700 cursor-pointer"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
         </li>
         <li class="mr-5">
           <NuxtLink
@@ -66,13 +73,6 @@
           @toggle-delete-group-modal="toggleDeleteGroupModal"
           @to-group-settings="
             $router.push(localePath(`/groups/${group.slug}/settings`))
-          "
-          @to-channel-settings="
-            $router.push(
-              localePath(
-                `/groups/${group.slug}/channels/${channel.slug}/settings`
-              )
-            )
           "
           v-if="visibleSettings"
           :items="dropDownItems"
@@ -163,8 +163,8 @@ export default {
   },
   computed: {
     user() {
-  return this.$auth.user;
-},
+      return this.$auth.user;
+    },
   },
   data() {
     return {
@@ -180,11 +180,6 @@ export default {
           text: "Rời khỏi nhóm",
           icon: "fas fa-user-alt-slash",
           action: "toggle-leave-group",
-        },
-        {
-          text: "Cài đặt kênh",
-          icon: "fas fa-cog",
-          action: "to-channel-settings",
         },
         {
           text: "Cài đặt nhóm",
@@ -226,6 +221,7 @@ export default {
       this.visibleSettings = !this.visibleSettings;
     },
     toggleLeaveGroupModal() {
+      
       this.toggleSettingsVisibility();
       this.visibleLeaveGroup = !this.visibleLeaveGroup;
     },
@@ -254,7 +250,7 @@ export default {
         });
         this.$emit("add-members-success", this.selectedFriends);
         this.selectedFriends = [];
-        this.$toast.success("Thêm thành viên thành công!");
+        this.$toast.show("Thêm thành viên thành công!");
       } catch (e) {
         this.$toast.error(e.response.data.meta.message);
       } finally {
@@ -264,7 +260,7 @@ export default {
     async leaveGroup() {
       try {
         await this.$axios.get(`/groups/${this.group.id}/leave`);
-        this.$toast.success("Bạn đã rời khỏi nhóm!");
+        this.$toast.show("Bạn đã rời khỏi nhóm!");
         this.$router.push(this.localePath("/groups"));
       } catch (e) {
         this.$toast.error(e.response.data.meta.message);
@@ -275,7 +271,7 @@ export default {
     async deleteGroup() {
       try {
         await this.$axios.delete(`/groups/${this.group.id}`);
-        this.$toast.success("Bạn đã xóa nhóm thành công!");
+        this.$toast.show("Bạn đã xóa nhóm thành công!");
         this.$router.push(this.localePath("/groups"));
       } catch (e) {
         this.$toast.error(e.response.data.meta.message);
@@ -295,7 +291,7 @@ export default {
           `/groups/${this.group.id}/channels/${this.channel.id}/posts`,
           formData
         );
-        this.$toast.success("Đăng bài thành công!");
+        this.$toast.show("Đăng bài thành công!");
         this.$emit("add-post-success", res.data);
         this.newPost.content = "";
         this.newPost.file = null;

@@ -114,7 +114,7 @@
             class="disabled:opacity-50 group relative w-1/2 flex justify-center py-2 px-4 border border-transparent font-medium rounded-md !text-white bg-indigo-600 hover:bg-indigo-700"
           >
             <i v-if="loading" class="fas fa-spinner text-3xl animate-spin"></i>
-            <span v-else> Xác nhận </span>
+            <span v-else> Cập nhật </span>
           </button>
         </div>
       </div>
@@ -185,12 +185,11 @@ export default {
         formData.append("username", this.user.username);
         formData.append("name", this.user.name);
         formData.append("phone_number", this.user.phone_number);
-        formData.append("password", this.user.password);
-        if (typeof this.user.avatar === "File") {
+        if (typeof this.user.avatar === "object") {
           formData.append("avatar", this.user.avatar);
         }
         const res = await this.$axios.post("/update-profile", formData);
-        this.$toast.success("Cập nhật thành công");
+        this.$toast.show("Cập nhật thành công");
       } catch (e) {
         this.error = e.response.data.meta.message;
       }

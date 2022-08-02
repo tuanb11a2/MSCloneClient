@@ -143,7 +143,7 @@ export default {
     async submit(friendId) {
       try {
         await this.$axios.$get(`/friends/${friendId}/remove`);
-        this.$toast.success("Xóa bạn bè thành công!");
+        this.$toast.show("Xóa bạn bè thành công!");
 
         this.filteredFriends = this.filteredFriends.filter(
           (friend) => friend.id !== friendId

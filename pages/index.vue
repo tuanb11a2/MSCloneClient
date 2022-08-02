@@ -17,7 +17,7 @@
         <ul class="pt-0 p-4">
           <li class="">
             <NuxtLink
-              :to="localePath('/')"
+              :to="localePath('/profile')"
               class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-lg transition-all dark:text-dark-txt"
             >
               <NuxtImg v-if="user" :src="user.avatar" class="w-10 mr-2 h-10 rounded-full" />
@@ -339,7 +339,7 @@ export default {
           }
         );
         currentPost.comments.push(res.data);
-        this.$toast.success("Bình luận của bạn đã được gửi");
+        this.$toast.show("Bình luận của bạn đã được gửi");
         this.comment = "";
       } catch (e) {
         this.$toast.error(e.response.data.message);
@@ -348,7 +348,7 @@ export default {
     async acceptFriend(id) {
       try {
         await this.$axios.$get(`/friends/${id}/accept`);
-        this.$toast.success("Bạn đã chấp nhận lời mời kết bạn!");
+        this.$toast.show("Bạn đã chấp nhận lời mời kết bạn!");
         this.pendingFriends = this.pendingFriends.filter((x) => x.id !== id);
       } catch (e) {
         this.$toast.error(e.response.data.message);
@@ -358,7 +358,7 @@ export default {
     async declineFriend(id) {
       try {
         await this.$axios.$get(`/friends/${id}/decline`);
-        this.$toast.success("Bạn đã từ chối lời mời kết bạn");
+        this.$toast.show("Bạn đã từ chối lời mời kết bạn");
         this.pendingFriends = this.pendingFriends.filter((x) => x.id !== id);
       } catch (e) {
         this.$toast.error(e.response.data.message);
