@@ -147,6 +147,8 @@
 import { required } from "vuelidate/lib/validators";
 
 export default {
+  middleware: "auth",
+  auth: "guest",
   layout: "guest",
   head() {
     return {
@@ -179,13 +181,12 @@ export default {
     },
   },
   mounted() {
-    // if (this.$route.query.token) {
-    //   this.$store.dispatch("auth/saveAuthToken", {
-    //     authToken: this.$route.query.token,
-    //     remember: false,
-    //   });
-    //   this.$router.push(this.localePath("/"));
-    // }
+    const token = this.$route.query.token;
+    if (token) {
+      this.$auth.setUserToken(token);
+      this.$store.state.auth.loggedIn = true;
+      this.$auth.fetchUser()
+    }
   },
   methods: {
     async login() {
@@ -198,12 +199,12 @@ export default {
           return;
         }
         const res = await this.$axios.post("/auth/login", this.auth);
-        this.$auth.loginWith('laravelJWT', {
+        this.$auth.loginWith("laravelJWT", {
           data: {
             identity: this.auth.identity,
             password: this.auth.password,
-          }
-        })
+          },
+        });
       } catch (e) {
         this.error = e.response.data.meta.message;
       } finally {

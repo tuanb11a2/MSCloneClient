@@ -30,8 +30,8 @@ export default {
   },
   methods: {
     returnBack() {
-      window.opener.location.href = `${process.env.appUrl}/login?token=${this.$route.query.token}`;
       window.close();
+      window.opener.location.href = `${process.env.appUrl}/login?token=${this.$route.query.token}`;
     },
   },
 };

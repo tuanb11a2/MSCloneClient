@@ -279,6 +279,8 @@ const usernameRegex = helpers.regex(
 );
 
 export default {
+  middleware: "auth",
+  auth: "guest",
   head() {
     return {
       title: this.$t("meta.signUp.title"),
