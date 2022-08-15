@@ -319,6 +319,11 @@ export default {
       groups: null,
     };
   },
+  mounted() {
+    if (this.$route.query.token) {
+      this.$router.push('/');
+    }
+  },
   methods: {
     pluck(array, key) {
       return array.map((o) => o[key]);

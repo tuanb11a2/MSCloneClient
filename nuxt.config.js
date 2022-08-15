@@ -82,15 +82,6 @@ export default {
           logout: { url: '/auth/logout', method: 'post' },
           user: { url: '/auth/user', method: 'get' }
         },
-        token: {
-          property: 'access_token',
-          maxAge: 60 * 60
-        },
-        refreshToken: {
-          maxAge: 60 * 60,
-          property: 'access_token',
-          data: 'access_token',
-        },
       },
     }
   },

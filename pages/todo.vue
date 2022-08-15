@@ -42,9 +42,10 @@
             Bạn không còn công việc nào 🥳
           </div>
           <draggable
+            :id="column.type"
             :list="column.tasks"
             :animation="200"
-            @change="changeTask(column.title, $event)"
+            @end="changeTask"
             ghost-class="ghost-card"
             group="tasks"
           >
@@ -144,8 +145,11 @@ export default {
     }
   },
   methods: {
-    changeTask(title, event) {
-      console.log(event);
+    async changeTask(event) {
+      console.log(event.to.id);
+      await this.$axios.put(`/todo/${this.editTodo.id}`, this.editTodo);
+        this.toggleEditModal();
+        this.$emit("edit-task", this.editTodo);
       // console.log(event.relatedContext.list[0].type)
       // console.log(event.draggedContext.element.id);
     },

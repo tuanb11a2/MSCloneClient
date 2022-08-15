@@ -180,12 +180,13 @@ export default {
       password: { required },
     },
   },
-  mounted() {
+  async mounted() {
     const token = this.$route.query.token;
     if (token) {
       this.$auth.setUserToken(token);
-      this.$store.state.auth.loggedIn = true;
-      this.$auth.fetchUser()
+      const res = await this.$axios.get("/auth/user");
+      this.$auth.setUser(res.data);
+      this.$auth.$storage.setUniversal('loggedIn', true)
     }
   },
   methods: {
@@ -198,8 +199,7 @@ export default {
           this.loading = false;
           return;
         }
-        const res = await this.$axios.post("/auth/login", this.auth);
-        this.$auth.loginWith("laravelJWT", {
+        await this.$auth.loginWith("laravelJWT", {
           data: {
             identity: this.auth.identity,
             password: this.auth.password,
