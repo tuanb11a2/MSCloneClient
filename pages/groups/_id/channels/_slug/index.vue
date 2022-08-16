@@ -39,7 +39,7 @@
               {{ $moment(post.updated_at).format("D MMMM, YYYY") }}
             </div>
             <div class="flex mt-3 relative">
-              <span v-if="post.user.id === user.id" type="button" class="fas fa-times" @click="deletePost"></span>
+              <span v-if="post.user.id === user.id" type="button" class="absolute top-0 right-0 fas fa-times" @click="deletePost"></span>
               <div class="flex-shrink-0 mr-3">
                 <NuxtImg
                   class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
