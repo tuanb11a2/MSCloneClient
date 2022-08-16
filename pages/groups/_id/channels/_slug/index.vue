@@ -34,12 +34,21 @@
           />
         </div>
         <div class="px-4 md:px-20 2xl:px-64 overscroll-y-scroll" v-else>
-          <div v-for="post in channel.posts" :key="post.id" class="my-5">
+          <div
+            v-for="post in channel.posts"
+            :key="post.id"
+            class="my-5 relative"
+          >
+            <span
+              v-if="post.user.id === user.id"
+              class="absolute top-0 right-0 fas fa-times cursor-pointer"
+              @click="deletePost(post.id)"
+            ></span>
+
             <div class="divider text-sm font-light">
               {{ $moment(post.updated_at).format("D MMMM, YYYY") }}
             </div>
-            <div class="flex mt-3 relative">
-              <span v-if="post.user.id === user.id" type="button" class="absolute top-0 right-0 fas fa-times" @click="deletePost"></span>
+            <div class="flex mt-3">
               <div class="flex-shrink-0 mr-3">
                 <NuxtImg
                   class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
@@ -220,7 +229,7 @@ export default {
     },
     deletePost(id) {
       this.channel.posts = this.channel.posts.filter((post) => post.id !== id);
-      this.$toast.show('Xóa bài viết thành công');
+      this.$toast.show("Xóa bài viết thành công");
     },
     showReplyInput(id) {
       document.getElementById(`post${id}`).classList.remove("hidden");
