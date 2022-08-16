@@ -34,7 +34,7 @@
             class="inline-flex cursor-pointer items-center justify-center px-5 py-2 mr-2 text-xs font-bold leading-none text-red-100 bg-blue-500 rounded"
             >Đã nộp:
             {{ exercise.submissions ? exercise.submissions.length : 0 }}/{{
-              exercise.users_count
+              exercise.users_count - 1
             }}
           </span>
         </div>

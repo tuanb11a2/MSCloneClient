@@ -63,7 +63,7 @@
                     >Đã nộp:
                     {{
                       exercise.submissions ? exercise.submissions.length : 0
-                    }}/{{ exercise.users ? exercise.users.length : 0 }}
+                    }}/{{ exercise.users ? exercise.users.length - 1 : 0 }}
                   </span>
                 </div>
               </div>
@@ -132,7 +132,7 @@
                       >Đã nộp:
                       {{
                         exercise.submissions ? exercise.submissions.length : 0
-                      }}/{{ exercise.users ? exercise.users.length : 0 }}
+                      }}/{{ exercise.users ? exercise.users.length - 1 : 0 }}
                     </span>
                   </div>
                 </div>
@@ -199,7 +199,7 @@
                       >Đã nộp:
                       {{
                         exercise.submissions ? exercise.submissions.length : 0
-                      }}/{{ exercise.users ? exercise.users.length : 0 }}
+                      }}/{{ exercise.users ? exercise.users.length - 1 : 0 }}
                     </span>
                   </div>
                 </div>
