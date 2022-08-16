@@ -199,7 +199,7 @@ export default {
     },
   },
   async mounted() {
-    Echo.channel("personal-chat").listen("message.sent", (e) => {
+    Echo.channel("personal-chat").listen(".message.sent", (e) => {
       console.log(e);
       if (
         e.message.sender_id !== this.user.id &&
