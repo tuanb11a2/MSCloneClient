@@ -40,7 +40,7 @@
         </div>
         <div v-else class="text-sm font-semibold text-gray-500">
           <p class="">Điểm</p>
-          <p v-if="userSubmission.grade">{{ userSubmission.grade }}/100</p>
+          <p v-if="userSubmission">{{ userSubmission.grade }}/100</p>
           <p v-else>Không có điểm</p>
         </div>
       </div>
