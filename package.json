@@ -44,7 +44,7 @@
     "vue-virtual-scroll-list": "^2.3.3",
     "vuedraggable": "^2.24.3",
     "vuelidate": "^0.7.7",
-    "webpack": "^4.46.0"
+    "webpack": "^5.75.0"
   },
   "devDependencies": {
     "@nuxt/postcss8": "^1.1.3",
