@@ -2685,13 +2685,6 @@ backo2@1.0.2:
   resolved "https://registry.npmjs.org/backo2/-/backo2-1.0.2.tgz"
   integrity "sha1-MasayLEpNjRj41s+u2n038+6eUc= sha512-zj6Z6M7Eq+PBZ7PQxl5NT665MvJdAkzp0f60nAJ+sLaSCBPMwVak5ZegFbgVCzFcCJTKFoMizvM5Ld7+JrRJHA=="
 
-backoff@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.npmjs.org/backoff/-/backoff-2.5.0.tgz"
-  integrity "sha1-9hbtqdPktmuMp/ynn2lXIsX44m8= sha512-wC5ihrnUXmR2douXmXLCe5O3zg3GKIyvRi/hi58a/XyRxVI+3/yM0PYueQOZXPXQ9pxBislYkw+sF9b7C/RuMA=="
-  dependencies:
-    precond "0.2"
-
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
@@ -8807,11 +8800,6 @@ prebuild-install@^7.0.1:
     tar-fs "^2.0.0"
     tunnel-agent "^0.6.0"
 
-precond@0.2:
-  version "0.2.3"
-  resolved "https://registry.npmjs.org/precond/-/precond-0.2.3.tgz"
-  integrity "sha1-qpWRvKokkj8eD0hJ0kD0fvwQdaw= sha512-QCYG84SgGyGzqJ/vlMsxeXd/pgL/I94ixdNFyh1PusWmTCyVfPJjZ1K1jvHtsbfnXQs2TSkEP2fR7QiMZAnKFQ=="
-
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.1.2.tgz"
@@ -10423,12 +10411,11 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-twilio-video@^2.18.1:
-  version "2.21.1"
-  resolved "https://registry.npmjs.org/twilio-video/-/twilio-video-2.21.1.tgz"
-  integrity sha512-odVq6tBF2OGwtOncvGuQjyuv6fAIkIWVzZZxlYnFkbUen6eq3A9fCtNuKLb+GnXFwXLzzRHByi3yJzQgkWbJow==
+twilio-video@^2.25.0:
+  version "2.25.0"
+  resolved "https://registry.yarnpkg.com/twilio-video/-/twilio-video-2.25.0.tgz#2582f6d23cca9037d31cdf0bc8a01bf3eaca7e99"
+  integrity sha512-6bfGBmBRB7qXDQHEjKutFc2eRv7PhXZ3znf84pE0nCNQuMOGWT95EAaZvfobQpMR8ZqnZsgO/1KuBYcwW0NrdA==
   dependencies:
-    backoff "^2.5.0"
     events "^3.3.0"
     util "^0.12.4"
     ws "^7.4.6"
